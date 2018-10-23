@@ -3,8 +3,8 @@
 # Declare variables to be passed into your templates.
 replicaCount: 1
 image:
-  repository: draft
-  tag: dev
+  repository: 998560034811.dkr.ecr.us-east-1.amazonaws.com/i-93/iot-register
+  tag: 0.0.4
   pullPolicy: IfNotPresent
 service:
   name: iot-register
