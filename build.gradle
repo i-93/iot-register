@@ -1,7 +1,6 @@
 buildscript {
     repositories {
         mavenLocal()
-
         mavenCentral()
 
         maven {
@@ -40,10 +39,7 @@ bootJar {
 
 repositories {
     mavenLocal()
-
-    maven {
-        url = "http://maven.cloud.sophos:8081/nexus/content/groups/develop/"
-    }
+    mavenCentral()
 
     maven {
         url = "https://maven.springframework.org/milestone/"
