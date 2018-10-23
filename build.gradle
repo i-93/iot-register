@@ -1,17 +1,37 @@
 buildscript {
     repositories {
+        mavenLocal()
+
         mavenCentral()
+
+        maven {
+            url = "https://maven.springframework.org/milestone/"
+        }
+
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
     }
     dependencies {
+        classpath "gradle.plugin.aspectj:gradle-aspectj:0.1.6"
         classpath("org.springframework.boot:spring-boot-gradle-plugin:2.0.2.RELEASE")
     }
 }
 
+project.ext {
+    aspectjVersion = '1.9.2.RC3'
+}
+
+
 apply plugin: 'java'
+apply plugin: "aspectj.gradle"
 apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
+
+sourceCompatibility = 11
+targetCompatibility = 11
 
 bootJar {
     baseName = 'restyserv'
@@ -19,11 +39,16 @@ bootJar {
 }
 
 repositories {
-    mavenCentral()
-}
+    mavenLocal()
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+    maven {
+        url = "http://maven.cloud.sophos:8081/nexus/content/groups/develop/"
+    }
+
+    maven {
+        url = "https://maven.springframework.org/milestone/"
+    }
+}
 
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-web")
